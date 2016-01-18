@@ -1,0 +1,22 @@
+{
+  "name": "pingpong-api",
+  "version": "0.1.0",
+  "description": "PingPong API Node.js example",
+  "main": "app.js",
+  "engines": {
+    "node": ">=4.1.1",
+    "npm": ">=2.1.x"
+  },
+  "repository": "https://github.com/mongolab/hello-mongoose.git",
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "pg": "^4.4.3"
+  },
+  "changelog": [
+  ],
+  "homepage": "http://hello-mongoose.herokuapp.com"
+}
