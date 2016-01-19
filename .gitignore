@@ -1,7 +1,11 @@
 # Created by https://www.gitignore.io/api/node,vim
 
 ### Node ###
-# Logs
+.env
+.env.docker
+.git
+node_modules
+npm-debug.log Logs
 logs
 *.log
 npm-debug.log*

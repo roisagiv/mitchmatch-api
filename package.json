@@ -2,21 +2,27 @@
   "name": "pingpong-api",
   "version": "0.1.0",
   "description": "PingPong API Node.js example",
-  "main": "app.js",
+  "main": "index.js",
   "engines": {
     "node": ">=4.1.1",
     "npm": ">=2.1.x"
   },
-  "repository": "https://github.com/mongolab/hello-mongoose.git",
   "authors": [
     ""
   ],
-  "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
+    "knex": "0.9.0",
     "pg": "^4.4.3"
   },
-  "changelog": [
-  ],
-  "homepage": "http://hello-mongoose.herokuapp.com"
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  },
+  "scripts":{
+    "start-dev": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "seed-db": "knex seed:run",
+    "init-db": "npm run migrate && knex seed:run",
+    "postinstall": "knex migrate:rollback && npm run init-db"
+  }
 }
