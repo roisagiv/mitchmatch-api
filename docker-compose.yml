@@ -24,3 +24,5 @@ shell:
     - '.:/app/user'
 herokuPostgresql:
   image: postgres
+  ports:
+    - '5432:5432'
