@@ -24,6 +24,6 @@
     "migrate": "knex migrate:latest",
     "seed-db": "knex seed:run",
     "init-db": "npm run migrate && knex seed:run",
-    "postinstall": "npm run init-db"
+    "_postinstall": "npm run init-db"
   }
 }
