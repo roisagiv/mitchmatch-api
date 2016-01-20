@@ -25,7 +25,7 @@ app.get('/status', function (request, response) {
 
 // Users API
 app.post('/api/v1/users', function (request, response, next) {
-  console.log('*** /api/v1/users ***');
+  console.log('*** POST /api/v1/users ***');
   console.log(request.body);
 
   var username = request.body.username;
@@ -55,10 +55,37 @@ app.post('/api/v1/users', function (request, response, next) {
   }).then(function () {
     response.status(200).end();
   }).catch(function (error) {
+    console.log(error);
     response.status(500).send(error);
   });
 });
 
+// quickmatch API
+var handleQuickMatchForUser = function (quickmatch, request, response, next) {
+  knex('users').where('username', request.params.username).update({
+    'quickmatch': quickmatch,
+    'updated_at': new Date()
+  }).then(function (id) {
+    console.log(id);
+    response.status(id == 0 ? 500 : 200).end();
+  }).catch(function (error) {
+    console.log(error);
+    response.status(500).send(error);
+  });
+}
+app.post('/api/v1/users/:username/quickmatch', function (request, response, next) {
+  console.log('*** POST /api/v1/users/:username/quickmatch ***');
+  console.log(request.params);
+  handleQuickMatchForUser(true, request, response, next);
+});
+
+app.delete('/api/v1/users/:username/quickmatch', function (request, response, next) {
+  console.log('*** DELETE /api/v1/users/:username/quickmatch ***');
+  console.log(request.params);
+  handleQuickMatchForUser(false, request, response, next);
+});
+
+// start the app
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
