@@ -184,6 +184,9 @@ app.get('/api/v1/users/:username/quickmatch', function (request, response, next)
   });
 });
 
+// *********
+// Games API
+// *********
 app.delete('/api/v1/users/:username/games/:game_id', function (request, response, next) {
   console.log('*** DELETE /api/v1/users/:username/games/:game_id ***');
   console.log(request.params);
@@ -219,6 +222,12 @@ app.delete('/api/v1/users/:username/games/:game_id', function (request, response
       'player_2_confirm': true
     })
     .del();
+  })
+  .then(function () {
+    return knex('users').where('username', username).update({
+      'quickmatch': false,
+      'updated_at': new Date()
+    }) 
   })
   .catch(function (error) {
     console.log(error);
