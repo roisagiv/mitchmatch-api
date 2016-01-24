@@ -1,7 +1,7 @@
 {
-  "name": "pingpong-api",
+  "name": "mitchmatach",
   "version": "0.1.0",
-  "description": "PingPong API Node.js example",
+  "description": "MitchMatch API Node.js",
   "main": "index.js",
   "engines": {
     "node": ">=4.1.1",
